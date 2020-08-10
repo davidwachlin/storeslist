@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react';
-import StoreDetail from './StoreDetail';
-import axios from 'axios';
+import React, { useState, useEffect } from "react";
+import StoreDetail from "./StoreDetail";
+import axios from "axios";
 // import Button from "react-bootstrap/Button";
-import Dropdown from 'react-bootstrap/Dropdown';
+import Dropdown from "react-bootstrap/Dropdown";
 
 const StoreList = () => {
   const [stores, setStores] = useState([]);
@@ -20,12 +20,10 @@ const StoreList = () => {
   }, [stores]);
 
   const fetchData = async () => {
-    const result = await axios('https://jsonplaceholder.typicode.com/posts');
+    const result = await axios("https://jsonplaceholder.typicode.com/posts");
     const storeList = result.data.slice(0, 10);
     setStores(storeList);
   };
-
-  const selectStore = () => {};
 
   const renderList = () => {
     const storesList = stores.map((store) => {
@@ -59,7 +57,7 @@ const StoreList = () => {
           </Dropdown>
         ) : null}
       </div>
-      <div>{storeId > 0 ? <StoreDetail storeId={storeId} /> : null}</div>
+      <StoreDetail storeId={storeId} />
     </>
   );
 };
